@@ -57,7 +57,7 @@ pub fn (mut i PPMImage) render(cam vray.Camera, world vray.HittableList) {
 			mut col := vec.vec3[f32](0, 0, 0)
 			for s := u32(0); s < cam.samples_per_pixel; s++ {
 				ray := cam.get_random_ray(x, y)
-				col += vray.IHittable(world).ray_hit_color(ray, cam.max_depth)
+				col += vray.IHittable(world).ray_color(ray, cam.max_depth)
 			}
 
 			write_color(mut builder, col, cam.samples_per_pixel)
