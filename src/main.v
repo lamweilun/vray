@@ -17,13 +17,15 @@ fn main() {
 		samples = u32(os.args[3].int())
 		samples = u32(os.args[4].int())
 	}
-	cam := vray.Camera.new(width, height, samples, max_depth, vec.vec3[f32](0, 0, 1))
+	cam := vray.Camera.new(width, height, samples, max_depth, vec.vec3[f32](0, 0, 0.5))
 
 	// Setup world
 	material_ground := vray.Lambertian.new(vec.vec3[f32](0.8, 0.8, 0.0))
-	material_center := vray.Lambertian.new(vec.vec3[f32](0.7, 0.3, 0.3))
-	material_left := vray.Metal.new(vec.vec3[f32](0.8, 0.8, 0.8), 0.3)
-	material_right := vray.Metal.new(vec.vec3[f32](0.8, 0.6, 0.2), 0.1)
+
+	mut sphere_materials := []vray.Material{}
+	sphere_materials << vray.Lambertian.new(vec.vec3[f32](0.8, 0.6, 0.2))
+	sphere_materials << vray.Metal.new(vec.vec3[f32](0.8, 0.8, 0.8), 0.3)
+	sphere_materials << vray.Dielectric.new(1.5)
 
 	mut world := vray.HittableList{}
 
@@ -36,19 +38,19 @@ fn main() {
 	world.add(vray.Sphere{
 		center: vec.vec3[f32](0.0, 0.0, -2.0)
 		radius: 1.0
-		mat: material_center
+		mat: sphere_materials[0]
 	})
 
 	world.add(vray.Sphere{
 		center: vec.vec3[f32](-2.0, 0.0, -2.0)
 		radius: 1.0
-		mat: material_left
+		mat: sphere_materials[1]
 	})
 
 	world.add(vray.Sphere{
 		center: vec.vec3[f32](2.0, 0.0, -2.0)
 		radius: 1.0
-		mat: material_right
+		mat: sphere_materials[2]
 	})
 
 	mut image := ppm.PPMImage.new(width, height)

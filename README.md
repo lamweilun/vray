@@ -11,7 +11,7 @@ Check out [vlang here](https://vlang.io/) (GitHub [here](https://github.com/vlan
 ## Tested on
 - This has been tested to compile and ran on Windows, using the following vlang version
   - V 0.4.2 14afda7, timestamp: 2023-11-04 19:48:38 +0200
-- Untested on Linux/macOS, your mileage may vary if you do want to run this project on other platforms.
+- Untested on Linux/macOS, but it should work~
 
 ## Progress
 - Current implementation is up to [Chapter 10.6](https://raytracing.github.io/books/RayTracingInOneWeekend.html#metal/fuzzyreflection) of [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
