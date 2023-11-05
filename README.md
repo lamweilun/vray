@@ -20,7 +20,7 @@ Check out [vlang here](https://vlang.io/) (GitHub [here](https://github.com/vlan
 ## Sample Output
 ![](output.jpg)
 ---
-*NOTE: This program outputs a .ppm image file. Please use a valid PPM image viewer or convert said image to PNG/JPG for viewing. The output.png file in this repo is only meant for displaying in this README.*
+*NOTE: This program outputs a .ppm image file. Please use a valid PPM image viewer or convert said image to PNG/JPG for viewing. The output.jpg file in this repo is only meant for displaying in this README.*
 
 ## Changes
 - Entire project is re-written in vlang, without any dependencies other than vlang's own builtin modules (essentially its standard library).
