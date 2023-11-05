@@ -22,8 +22,8 @@ fn main() {
 	// Setup world
 	material_ground := vray.Lambertian.new(vec.vec3[f32](0.8, 0.8, 0.0))
 	material_center := vray.Lambertian.new(vec.vec3[f32](0.7, 0.3, 0.3))
-	material_left := vray.Metal.new(vec.vec3[f32](0.8, 0.8, 0.8))
-	material_right := vray.Metal.new(vec.vec3[f32](0.8, 0.6, 0.2))
+	material_left := vray.Metal.new(vec.vec3[f32](0.8, 0.8, 0.8), 0.3)
+	material_right := vray.Metal.new(vec.vec3[f32](0.8, 0.6, 0.2), 0.1)
 
 	mut world := vray.HittableList{}
 

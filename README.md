@@ -14,7 +14,7 @@ Check out [vlang here](https://vlang.io/) (GitHub [here](https://github.com/vlan
 - Untested on Linux/macOS, your mileage may vary if you do want to run this project on other platforms.
 
 ## Progress
-- Current implementation is up to [Chapter 10.5](https://raytracing.github.io/books/RayTracingInOneWeekend.html#metal/ascenewithmetalspheres) of [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- Current implementation is up to [Chapter 10.6](https://raytracing.github.io/books/RayTracingInOneWeekend.html#metal/fuzzyreflection) of [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 - More to come as I slowly update the project...
 
 ## Sample Output
