@@ -24,4 +24,5 @@ bin/
 *.js
 
 # vray
-output.ppm
+*.ppm
+*.png
