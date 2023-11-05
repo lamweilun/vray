@@ -18,7 +18,7 @@ pub fn (mut record HitRecord) set_face_normal(ray Ray, outward_normal vec.Vec3[f
 	if record.is_front {
 		record.normal = outward_normal
 	} else {
-		record.normal = negate(record.normal)
+		record.normal = negate(outward_normal)
 	}
 }
 

@@ -15,17 +15,19 @@ fn main() {
 		width = u32(os.args[1].int())
 		height = u32(os.args[2].int())
 		samples = u32(os.args[3].int())
-		samples = u32(os.args[4].int())
+		max_depth = u32(os.args[4].int())
 	}
-	cam := vray.Camera.new(width, height, samples, max_depth, vec.vec3[f32](0, 0, 0.5))
+	cam_pos := vec.vec3[f32](3, 1, 1.0)
+	cam_lookat := vec.vec3[f32](0, 0, -2.0)
+	cam := vray.Camera.new(width, height, samples, max_depth, cam_pos, cam_lookat)
 
 	// Setup world
-	material_ground := vray.Lambertian.new(vec.vec3[f32](0.8, 0.8, 0.0))
+	material_ground := vray.Lambertian.new(vec.vec3[f32](0.4, 0.6, 0.5))
 
 	mut sphere_materials := []vray.Material{}
-	sphere_materials << vray.Lambertian.new(vec.vec3[f32](0.8, 0.6, 0.2))
-	sphere_materials << vray.Metal.new(vec.vec3[f32](0.8, 0.8, 0.8), 0.3)
-	sphere_materials << vray.Dielectric.new(1.5)
+	sphere_materials << vray.Lambertian.new(vec.vec3[f32](0.5, 0.3, 0.2))
+	sphere_materials << vray.Metal.new(vec.vec3[f32](0.8, 0.8, 0.8), 0.1)
+	sphere_materials << vray.Dielectric.new(2.4)
 
 	mut world := vray.HittableList{}
 
@@ -36,19 +38,19 @@ fn main() {
 	})
 
 	world.add(vray.Sphere{
-		center: vec.vec3[f32](0.0, 0.0, -2.0)
-		radius: 1.0
+		center: vec.vec3[f32](0.0, 0.75, -2.5)
+		radius: 1.5
 		mat: sphere_materials[0]
 	})
 
 	world.add(vray.Sphere{
-		center: vec.vec3[f32](-2.0, 0.0, -2.0)
+		center: vec.vec3[f32](-2.5, 0.0, -1.0)
 		radius: 1.0
 		mat: sphere_materials[1]
 	})
 
 	world.add(vray.Sphere{
-		center: vec.vec3[f32](2.0, 0.0, -2.0)
+		center: vec.vec3[f32](2.5, 0.0, -2.5)
 		radius: 1.0
 		mat: sphere_materials[2]
 	})

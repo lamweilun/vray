@@ -1,7 +1,8 @@
 module vray
 
-import math.vec
 import math
+import math.vec
+import rand
 
 interface Material {
 	scatter(r Ray, rec HitRecord, mut attenuation vec.Vec3[f32], mut scattered Ray) bool
@@ -68,17 +69,23 @@ pub fn Dielectric.new(index f32) Dielectric {
 	}
 }
 
+pub fn Dielectric.reflectance(cosine f32, ref_idx f32) f32 {
+	mut r0 := (1.0 - ref_idx) / (1 + ref_idx)
+	r0 *= r0
+	return r0 + (1.0 - r0) * math.powf(1.0 - cosine, 5.0)
+}
+
 pub fn (d Dielectric) scatter(r Ray, rec HitRecord, mut attenuation vec.Vec3[f32], mut scattered Ray) bool {
-	attenuation = vec.vec3[f32](1.0, 1.0, 1.0)
+	attenuation = vec.vec3[f32](1, 1, 1)
 	refraction_ratio := if rec.is_front { 1.0 / d.ir } else { d.ir }
 
 	unit_direction := r.direction.normalize()
 	cos_theta := f32(math.min(negate(unit_direction).dot(rec.normal), 1.0))
 	sin_theta := f32(math.sqrtf(1.0 - cos_theta * cos_theta))
 
-	mut direction := vec.vec3[f32](0, 0, 0)
-	cannot_refract := refraction_ratio * sin_theta > 1.0
-	if cannot_refract {
+	cannot_refract := (refraction_ratio * sin_theta) > 1.0
+	mut direction := vec.Vec3[f32]{}
+	if cannot_refract || Dielectric.reflectance(cos_theta, refraction_ratio) > rand.f32() {
 		direction = reflect(unit_direction, rec.normal)
 	} else {
 		direction = refract(unit_direction, rec.normal, refraction_ratio)

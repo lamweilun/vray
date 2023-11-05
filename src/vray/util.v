@@ -8,7 +8,7 @@ pub fn random_vec_in_unit_sphere() vec.Vec3[f32] {
 	x := rand.f32_in_range(-1.0, 1.0) or { panic(err) }
 	y := rand.f32_in_range(-1.0, 1.0) or { panic(err) }
 	z := rand.f32_in_range(-1.0, 1.0) or { panic(err) }
-	return vec.vec3[f32](x, y, z)
+	return vec.vec3[f32](x, y, z).normalize()
 }
 
 pub fn random_vec_in_hemisphere(normal vec.Vec3[f32]) vec.Vec3[f32] {
@@ -27,9 +27,11 @@ pub fn reflect[T](v vec.Vec3[T], n vec.Vec3[T]) vec.Vec3[T] {
 	return v - (n.mul_scalar(v.dot(n) * 2.0))
 }
 
-pub fn refract[T](uv vec.Vec3[T], n vec.Vec3[T], etai_over_etat f32) vec.Vec3[T] {
-	cos_theta := f32(math.min(negate[T](uv).dot(n), 1.0))
-	r_out_perp := (uv + n.mul_scalar(cos_theta)).mul_scalar(etai_over_etat)
-	r_out_parallel := n.mul_scalar(-math.sqrtf(math.abs(1.0 - r_out_perp.dot(r_out_perp))))
-	return r_out_perp + r_out_parallel
+pub fn refract[T](v vec.Vec3[T], n vec.Vec3[T], ratio f32) vec.Vec3[T] {
+	n_dot_i := n.dot(v)
+	k := 1.0 - (ratio * ratio) * (1.0 - n_dot_i * n_dot_i)
+	if k < 0.0 {
+		return vec.vec3[f32](0, 0, 0)
+	}
+	return v.mul_scalar(ratio) - (n.mul_scalar(ratio * n_dot_i + math.sqrtf(k)))
 }
