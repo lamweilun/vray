@@ -5,3 +5,4 @@
 **/*.vsh linguist-language=V
 **/v.mod linguist-language=V
 *.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
