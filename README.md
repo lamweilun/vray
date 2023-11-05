@@ -17,6 +17,11 @@ Check out [vlang here](https://vlang.io/) (GitHub [here](https://github.com/vlan
 - Current implementation is up to [Chapter 9.5](https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity) of [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 - More to come as I slowly update the project...
 
+## Sample Output
+![](output.png)
+---
+*NOTE: This program outputs a .ppm image file. Please use a valid PPM image viewer or convert said image to PNG/JPG for viewing. The output.png file in this repo is only meant for displaying in this README.*
+
 ## Changes
 - Entire project is re-written in vlang, without any dependencies other than vlang's own builtin modules (essentially its standard library).
 
@@ -37,10 +42,6 @@ The default values for the arguments are used if none are specified
 - height: 288
 - sample: 100
 - depth: 50
-
-## Sample Output
-![](output.png)
-*NOTE: This program outputs a .ppm image file. Please use a valid PPM image viewer or convert said image to PNG/JPG for viewing. The output.png file in this repo is only meant for displaying in this README.*
 
 ### Generating C code
 [vlang](https://vlang.io/) has a feature where it can generate the C code that will be used for compilation, you can get it by running the following command in the root directory. Do note that
