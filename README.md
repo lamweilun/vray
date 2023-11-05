@@ -9,18 +9,18 @@ This program is an exercise (more like an excuse really) for me to learn vlang t
 Check out [vlang here](https://vlang.io/) (GitHub [here](https://github.com/vlang/v)). It's a general purpose programming language that is heavily inspired by C and Go.
 
 ## Tested on
-- This has been tested to compile and ran on Windows, without warnings using the following vlang version
+- This has been tested to compile and ran on Windows, using the following vlang version
   - V 0.4.2 14afda7, timestamp: 2023-11-04 19:48:38 +0200
 - Untested on Linux/macOS, your mileage may vary if you do want to run this project on other platforms.
 
 ## Progress
-- Current implementation is up to [Chapter 9.5](https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity) of [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- Current implementation is up to [Chapter 10.5](https://raytracing.github.io/books/RayTracingInOneWeekend.html#metal/ascenewithmetalspheres) of [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 - More to come as I slowly update the project...
 
 ## Sample Output
-![](output.jpg)
+![](output.png)
 ---
-*NOTE: This program outputs a .ppm image file. Please use a valid PPM image viewer or convert said image to PNG/JPG for viewing. The output.jpg file in this repo is only meant for displaying in this README.*
+*NOTE: This program outputs a .ppm image file. Please use a valid PPM image viewer or convert said image to PNG/JPG for viewing. The output.png file in this repo is only meant for displaying in this README.*
 
 ## Changes
 - Entire project is re-written in vlang, without any dependencies other than vlang's own builtin modules (essentially its standard library).
