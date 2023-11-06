@@ -4,6 +4,17 @@ import math
 import math.vec
 import rand
 
+pub fn random_color_in_range(min f32, max f32) vec.Vec3[f32] {
+	x := rand.f32_in_range(min, max) or { panic(err) }
+	y := rand.f32_in_range(min, max) or { panic(err) }
+	z := rand.f32_in_range(min, max) or { panic(err) }
+	return vec.vec3(x, y, z)
+}
+
+pub fn random_color() vec.Vec3[f32] {
+	return random_color_in_range(0.0, 1.0)
+}
+
 pub fn random_vec_in_unit_sphere() vec.Vec3[f32] {
 	x := rand.f32_in_range(-1.0, 1.0) or { panic(err) }
 	y := rand.f32_in_range(-1.0, 1.0) or { panic(err) }
@@ -17,6 +28,13 @@ pub fn random_vec_in_hemisphere(normal vec.Vec3[f32]) vec.Vec3[f32] {
 		return random_vec_in_sphere
 	}
 	return vec.vec3(-random_vec_in_sphere.x, -random_vec_in_sphere.y, -random_vec_in_sphere.z)
+}
+
+pub fn random_vec_in_unit_disk() vec.Vec3[f32] {
+	mut random_vec := random_vec_in_unit_sphere()
+	random_vec.z = 0
+	random_vec = random_vec.normalize()
+	return random_vec
 }
 
 pub fn negate[T](v vec.Vec3[T]) vec.Vec3[T] {
