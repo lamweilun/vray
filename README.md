@@ -9,9 +9,9 @@ This program is an exercise (more like an excuse really) for me to learn vlang t
 Check out [vlang here](https://vlang.io/) (GitHub [here](https://github.com/vlang/v)). It's a general purpose programming language that is heavily inspired by C and Go.
 
 ## Tested on
-- This has been tested to compile and ran on Windows, using the following vlang version
+- This has been tested to compile and ran on Windows and Linux, using the following vlang version
   - V 0.4.2 140c838, timestamp: 2023-11-06 12:24:58 +0200
-- Untested on Linux/macOS, but it should work~
+- Untested on macOS, but it should work~
 
 ## Progress
 - Pretty much completed everything from [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
